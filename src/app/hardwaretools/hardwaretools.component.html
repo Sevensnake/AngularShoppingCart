@@ -1,0 +1,25 @@
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center" fxLayoutGap="2px" fxLayoutGap.xs="0"
+    style="width:30%; padding:30px; margin-top:20px; border: solid black thin;">
+    <div fxFlex="50%" fxFlex.gt-sm="30%" class="one" *ngIf="tool">
+        <mat-card [@visibility]="visibility" >
+            <mat-card-header>
+                <mat-card-title *ngIf="tool">
+                    <h3>{{tool.name | uppercase}}</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{baseURL + tool.image}}" alt={{tool.name}}>
+            <mat-card-content>
+                <p>{{tool.description}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div fxFlex [hidden]="tool || errorMsg">
+    <mat-spinner></mat-spinner>
+    <h4>Loading ... Please wait</h4>
+</div>
+<div fxFlex *ngIf="errorMsg" style="color:red">
+    <h2>Error</h2>
+    <h4>{{errorMsg}}</h4>
+</div>

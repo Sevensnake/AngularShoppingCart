@@ -1,0 +1,22 @@
+<div class="login-page" >
+    <div class="form">
+        <form class="login-form" novalidate *ngIf="CreateAccount" [formGroup]="loginFormRegister" (ngSubmit)="OnSubmitCreate()">
+            <input type="email"  [(ngModel)]="email" name="email" placeholder="email" formControlName="email" required />
+            <input type="text"  formControlName="username" placeholder="username" required />
+            <input type="password" formControlName="password" placeholder="password" required />
+            <button [disabled]="loginFormRegister.invalid" >create</button>
+            <p class="message">Already registered? <a href="#" (click)="Signin();">Sign In</a></p>
+            <div *ngIf="formErrors?.email" class="errors">{{formErrors.email}}</div>
+            <div *ngIf="formErrors?.username" class="errors">{{formErrors.username}}</div>
+            <div *ngIf="formErrors?.password" class="errors">{{formErrors.password}}</div>
+        </form>
+        <form class="login-form" novalidate *ngIf="!CreateAccount" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input  formControlName="username" placeholder="username" type="text" required>
+            <input type="password" formControlName="password"  placeholder="password" required/>
+            <button  [disabled]="loginForm.invalid" >login</button>
+            <div *ngIf="formErrors?.username" class="errors">{{formErrors.username}}</div>
+            <div *ngIf="formErrors?.password" class="errors">{{formErrors.password}}</div>
+            <p class="message">Not registered? <a href="#" (click)="Create();">Create an account</a></p>
+        </form>
+    </div>
+</div>

@@ -29,6 +29,8 @@ import {RecipeItemComponent } from './recipes/recipe-list/recipe-item';
 import {DropdownDirective} from './dropdown.directive';
 import {ShoppingListService} from './services/shopping-list.service';
 import { HardwaremainComponent } from './hardwaremain/hardwaremain.component';
+
+import {MoreInfoDirective} from './directive/clickdirective';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import { HardwaremainComponent } from './hardwaremain/hardwaremain.component';
     ShoppingListComponent,
     ShoppingListAddComponent,
     RecipeItemComponent,
-    HardwaremainComponent
+    HardwaremainComponent,
+    MoreInfoDirective
   ],
   imports: [
     BrowserAnimationsModule,

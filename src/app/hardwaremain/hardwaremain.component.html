@@ -4,25 +4,29 @@
         <h3>Menu</h3>
         <hr>
       </div>
-    </div>{{tool | json}}
+    </div>
     <div fxFlex *ngIf="tool" [@expand]>
-      <mat-grid-list cols="2" rowHeight="200px">
-        <mat-grid-tile *ngFor="let too of tool" [routerLink]="['/tools', too.id]" 
+      <mat-grid-list cols="2" rowHeight="200px"><!--  [routerLink]="['/tools', too.id]"-->
+        <mat-grid-tile *ngFor="let too of tool" clickImage (clickImage)="opened = !opened"
           routerLinkActive="router-link-active">
           <img height="200px" src="{{ baseURL + too.image }}" alt={{too.name}}>
-  
           <mat-grid-tile-footer>
             <h1>{{too.name | uppercase}}</h1>
           </mat-grid-tile-footer>
         </mat-grid-tile>
       </mat-grid-list>
-    </div>
+   
     <div [hidden]="tool || errorMsg">
       <mat-spinner></mat-spinner><h4>Loading ... Please wait</h4>
     </div>
+    <div *ngIf="opened">
+            <mat-list-item *ngFor="let d of tool" class="text">
+                    <h6 mat-line> {{d.description}} </h6>
+                </mat-list-item>
+    </div>
+</div>
     <div fxFlex *ngIf="errorMsg">
         <h2>Error</h2>
         <h4>{{errMess}}</h4>
       </div>
-<!--     <app-dishdetail></app-dishdetail> -->
   </div>

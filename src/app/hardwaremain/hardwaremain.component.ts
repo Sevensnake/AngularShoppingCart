@@ -24,5 +24,4 @@ errorMsg: string;
     this.toolservice.getTooles().subscribe((tool) => this.tool = tool,
     errorMsg => this.errorMsg = <any>errorMsg);
   }
-
 }

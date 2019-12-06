@@ -1,32 +1,36 @@
+            <!--  [routerLink]="['/tools', too.id]"-->
 <div class="container" fxLayout="column" fxLayoutGap="10px">
     <div fxFlex>
-      <div>
-        <h3>Menu</h3>
-        <hr>
-      </div>
-    </div>
+        <div>
+            <h3>tools</h3>
+            <hr>
+        </div>
+    </div>{{imgsize | json}}
     <div fxFlex *ngIf="tool" [@expand]>
-      <mat-grid-list cols="2" rowHeight="200px"><!--  [routerLink]="['/tools', too.id]"-->
-        <mat-grid-tile *ngFor="let too of tool" clickImage (clickImage)="opened = !opened"
-          routerLinkActive="router-link-active">
-          <img height="200px" src="{{ baseURL + too.image }}" alt={{too.name}}>
-          <mat-grid-tile-footer>
-            <h1>{{too.name | uppercase}}</h1>
-          </mat-grid-tile-footer>
-        </mat-grid-tile>
-      </mat-grid-list>
-   
-    <div [hidden]="tool || errorMsg">
-      <mat-spinner></mat-spinner><h4>Loading ... Please wait</h4>
-    </div>
-    <div *ngIf="opened">
+        <mat-grid-list cols="2" rowHeight="400px">
+            <mat-grid-tile *ngFor="let too of tool"   
+                routerLinkActive="router-link-active">
+                <img [ngClass]="{
+                    'is-active': !opened,
+                    'is-inactive': opened
+                  }" clickImage (clickImage)="opened = !opened" src="{{ baseURL + too.image }}" alt={{too.name}}>
+                <mat-grid-tile-footer>
+                    <h1>{{too.name | uppercase}}</h1>
+                </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div [hidden]="tool || errorMsg">
+            <mat-spinner></mat-spinner>
+            <h4>Loading ... Please wait</h4>
+        </div>
+        <div *ngIf="opened">
             <mat-list-item *ngFor="let d of tool" class="text">
-                    <h6 mat-line> {{d.description}} </h6>
-                </mat-list-item>
+                <h6 mat-line> {{d.description}} </h6>
+            </mat-list-item>
+        </div>
     </div>
-</div>
     <div fxFlex *ngIf="errorMsg">
         <h2>Error</h2>
         <h4>{{errMess}}</h4>
-      </div>
-  </div>
+    </div>
+</div>

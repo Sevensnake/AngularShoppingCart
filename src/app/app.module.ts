@@ -16,6 +16,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSliderModule} from '@angular/material/slider';
+import { MatGridListModule } from '@angular/material/grid-list';
 import {HardwaretoolsService} from './services/hardwaretools.service';
 import { RecipesComponent } from './recipes/recipes/recipes.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
@@ -24,8 +25,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.component';
-
-
+import {RecipeItemComponent } from './recipes/recipe-list/recipe-item';
+import {DropdownDirective} from './dropdown.directive';
+import {ShoppingListService} from './services/shopping-list.service';
+import { HardwaremainComponent } from './hardwaremain/hardwaremain.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,9 @@ import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.comp
     RecipeEditComponent,
     RecipeListComponent,
     ShoppingListComponent,
-    ShoppingListAddComponent
+    ShoppingListAddComponent,
+    RecipeItemComponent,
+    HardwaremainComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -51,9 +56,10 @@ import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.comp
     MatFormFieldModule,
     MatSliderModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule
   ],
-  providers: [HardwaretoolsService, {provide: 'baseURL', useValue: baseURL}, ProcessHttpmsgService ],
-  bootstrap: [AppComponent]
+  providers: [HardwaretoolsService, ShoppingListService, ShoppingListAddComponent, DropdownDirective, {provide: 'baseURL', useValue: baseURL}, ProcessHttpmsgService ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -31,6 +31,10 @@ import {ShoppingListService} from './services/shopping-list.service';
 import { HardwaremainComponent } from './hardwaremain/hardwaremain.component';
 
 import {MoreInfoDirective} from './directive/clickdirective';
+import { LoginComponent } from './login/login.component';
+import { OnlineTestComponent } from './online-test/online-test.component';
+import {OnlineTestService} from './services/online-test.service';
+import { RegistrationComponent } from './registration/registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,10 @@ import {MoreInfoDirective} from './directive/clickdirective';
     ShoppingListAddComponent,
     RecipeItemComponent,
     HardwaremainComponent,
-    MoreInfoDirective
+    MoreInfoDirective,
+    LoginComponent,
+    OnlineTestComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserAnimationsModule,

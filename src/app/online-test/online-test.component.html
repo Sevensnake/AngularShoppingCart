@@ -1,0 +1,15 @@
+<p>Please take quiz</p>
+<div class="wrapper" *ngFor="let item of quest; let i = index">
+    <div>({{ item.quetionKey }}) {{ item.question }}
+        <fieldset id="{{i}}">
+            <div *ngFor="let itemop of item.options">
+                <input [value]='itemop.value' (click)="onItemChange(itemop.value, itemop.key, i)" 
+                    type="radio" name="{{i}}"> {{itemop.key}}
+            </div>
+                
+            
+        </fieldset>
+    </div>
+</div>
+<button (click)="submit()">submit</button>
+<div></div>

@@ -17,11 +17,13 @@ import {flyInOut, expand} from '../animations/app.animations';
 })
 export class HardwaremainComponent implements OnInit {
   tool: Tools[];
+  imgsize: string;
 errorMsg: string;
   constructor(private toolservice: HardwaretoolsService,  @Inject('baseURL') private baseURL) { }
 
   ngOnInit() {
     this.toolservice.getTooles().subscribe((tool) => this.tool = tool,
     errorMsg => this.errorMsg = <any>errorMsg);
+
   }
 }

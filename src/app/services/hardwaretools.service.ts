@@ -11,7 +11,13 @@ import { delay, map, catchError } from 'rxjs/operators';
 export class HardwaretoolsService {
   
   constructor(private http: HttpClient, private processhttpmsg: ProcessHTTPMsgServiceService) { }
-
+/*   getDishes(): Observable<Dish[]> {
+    return of(DISHES).pipe(delay(2000)).toPromise(); */
+   /*  return new Promise(resolve=> {
+      // Simulate server latency with 2 second delay
+        setTimeout(() => resolve(DISHES), 2000);
+    }); */
+ // }
   getTooles(): Observable<Tools[]> {
     return this.http.get<Tools[]>(baseURL + 'TOOLSLIST').pipe(catchError(this.processhttpmsg.handleError));
   }

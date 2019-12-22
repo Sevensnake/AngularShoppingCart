@@ -1,0 +1,15 @@
+<p>Answers</p>
+    <div class="wrapper" *ngFor="let item of quest; let i = index">
+        <div>({{ item.quetionKey }}) {{ item.question }}
+            <fieldset id="{{i}}">
+              <p style="color:green">Correct Answer:
+             {{item.answer.answer}}
+             </p>
+             <div [ngClass]="{
+                'correct':item.selectoption === 'correct',
+                'notcorrect':item.selectoption === undefined
+              }">your answer: {{ item.selectoption ? item.selectoption : 'Not Correct' }}</div>
+            </fieldset>
+        </div>
+    </div>
+<div></div>

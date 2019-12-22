@@ -8,5 +8,6 @@ export class Tools {
     label: string;
     price: string;
     description: string;
+    date: string;
     comments: Comment[];
 }
